@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurate</title>
+    <script src="app.js"></script>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            color: white;
+            background-color: #202731;
+        }
+
+        .header{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 300px;
+            padding: 100px 20vw;
+            background-color: #6441a5;
+        }
+
+        .custom-shape-divider-top-1664868415 {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape-divider-top-1664868415 svg {
+            position: relative;
+            display: block;
+            width: calc(111% + 1.3px);
+            height: 137px;
+        }
+
+        .custom-shape-divider-top-1664868415 .shape-fill {
+            fill: #6441a5;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hidescroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hidescroll {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #202731;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            border-radius: 12px;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #6441a5;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #6441a5;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+    </style>
+
+</head>
+<body>
+
+<section class="header">
+    <h1 style="font-weight: 600; font-size: 50px">Twitch TTS | With Overlay!</h1>
+    <p class="container" style="font-weight: 500; font-size: 20px">
+        You managed! You've found the Twitch TTS Overlay app and you can now turn your Twitch TTS messages into an overlay! You can then use OBS Studio to display the overlay on your stream. <br>
+        <p style="font-size: 25px">And it's completely free!</p>
+    </p>
+</section>
+
+<div class="custom-shape-divider-top-1664868415">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
+
+<section style="height: 100vh; position: fixed; top: 0; z-index: -1; width: 100%">
+    <div class="container" style="background-color: rgba(39,48,59,0.69); height: 100%">
+
+    </div>
+</section>
+<h1 class="container" style="font-weight: 600">Configurator!</h1>
+<div class="container" style="height: 100%; transition: all 500ms; background-color: rgba(43,53,65,0.78); padding: 20px; border-radius: 20px; text-align: center">
+
+    <div data-toggle="tooltip" data-placement="left" title="Du musst deinen Kanalnamen hier eingeben damit wir deine Kanalpunktebelohnung finden können!">
+        <label for="ChannelName">Dein Kanalname</label><br>
+        <input style="background: #202731; width: 100%; border: none; outline: none; color: white" type="text" name="Name" id="ChannelName" onchange="ChannelName=this.value; urlgen();">
+    </div>
+    <br>
+
+
+    <button type="button" style="width: 100%" id="sttartSearch" class="btn btn-dark" onclick="startSearch()" data-toggle="tooltip" data-placement="left" title="Benötigt Kanalname">Starte die Suche</button><br>
+    <br>
+    <p style="font-size: 20px">Browser Console:</p>
+    <p id="console" class="hidescroll" style="background: #202731; text-align: left; max-height: 80px; overflow: scroll; font-family: Lucida Sans">Nothing here<br></p>
+
+    <br>
+
+    <div data-toggle="tooltip" data-placement="left" title="Eine Kanalpunkte Belohung mit Texteingabe einlösen">
+        <label style="text-decoration: underline" for="RewardId">Deine Reward ID:</label>
+        <p type="text" id="RewardId" class="hidescroll" style="background: #202731; min-height: 20px; max-height: 80px; overflow: scroll; font-family: Lucida Sans"></p>
+    </div>
+    <br>
+
+    <div data-toggle="tooltip" data-placement="left" title="Wenn die Nachricht länger ist als hier angegeben wird sie nicht vorgelesen!">
+        <label for="slider" id="sliderlabel">Maximale länge der TTS: 80</label>
+        <div class="slidecontainer" id="slider">
+            <input type="range" min="20" max="500" value="80" class="slider" id="myRange">
+        </div>
+    </div>
+
+
+    <br>
+    <label for="urlgen">Deine Url:</label>
+    <div style="min-width:100px; height: 70px; border: 1px #4b4b4b solid; overflow: scroll" id="urlgen" class="hidescroll"></div>
+
+</div>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        console.log = function(e){
+            document.getElementById("console").innerHTML = document.getElementById("console").innerHTML + e + "<br>";
+
+            var objDiv = document.getElementById("console");
+            objDiv.scrollTop = objDiv.scrollHeight;
+
+            console.info(e)
+        }
+
+        function startSearch(){
+            var channelName = document.getElementById("ChannelName");
+            console.log(channelName.value);
+            ComfyJS.Init(channelName.value);
+        }
+
+        ComfyJS.onChat = ( user, message, flags, self, extra ) => {
+            if (flags.customReward){
+                document.getElementById("RewardId").innerHTML = extra.customRewardId;
+                RewardId = extra.customRewardId;
+                console.log(extra.customRewardId + " | " + message);
+                urlgen();
+            }
+        }
+
+        var slideCol = document.getElementById("myRange");
+
+        slideCol.oninput = function() {
+            length = this.value;
+            document.getElementById("sliderlabel").innerHTML = "Maximale länge der TTS: " + this.value;
+            urlgen();
+        }
+
+        var ChannelName = "";
+        var RewardId = "";
+        var length = "80";
+
+        function urlgen(){
+            document.getElementById("urlgen").innerHTML = "http://localhost:63342/TTSoeffentlich/obs.html?Name=" + ChannelName + "&RewardId=" + RewardId + "&Length=" + length;
+        }
+
+    </script>
+
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Leonlp9" data-description="Support me on Buy me a coffee!" data-message="" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+</body>
+</html>
