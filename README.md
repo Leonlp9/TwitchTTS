@@ -1,4 +1,4 @@
-# TwitchTTS
+# TwitchTTS | With Overlay!
 A simple Twitch chat to speech bot written in only Html Css and Javascript🤷🏻‍♂️ <br>
 <br>
 You can use it to make your own chat to speech bot or just use it as a template for your own project. <br>
