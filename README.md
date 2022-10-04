@@ -15,3 +15,6 @@ You can use it to make your own chat to speech bot or just use it as a template 
 3. Now we need the Channelpoint Reward ID. To get it go to your channel and redeem your reward!
 4. Now Configure your TTS Bot. You can change the Voice and the Language. You can also change the Volume and the Speed and many more.
 5. Now you can copy the Url and paste it into your Obs. You can also use it in Streamlabs OBS.
+
+## Templates
+Images Comming Soon
