@@ -114,6 +114,30 @@
                 text-shadow: 3px 3px 2px rgba(162, 24, 232, 1),5px 1px 19px rgba(255, 255, 255, 1),0px 0px 9px rgba(136, 0, 255, 1),3px 3px 5px rgba(255, 255, 255, 1);            }
         }
 
+        .anticopy {
+            position: relative;
+            display: inline-block;
+        }
+
+        .anticopy .anticopyschutz {
+            opacity: 0;
+            text-align: center;
+
+            position: absolute;
+            top: 0;
+            background: rgba(255, 86, 71, 0.75);
+            width: 100%;
+            height: 100%;
+            color: #202731;
+            font-weight: 600;
+            transition: all 0.5s ease;
+            font-size: 20px;
+        }
+
+        .anticopy:hover .anticopyschutz {
+            opacity: 1;
+        }
+
     </style>
 
 </head>
@@ -123,7 +147,7 @@
     <h1 style="font-weight: 600; font-size: 50px; animation: glow 1s ease-in-out infinite alternate">Twitch TTS | With Overlay!</h1>
     <p class="container" style="font-weight: 500; font-size: 20px">
         You managed! You've found the Twitch TTS Overlay app and you can now turn your Twitch TTS messages into an overlay! You can then use OBS Studio to display the overlay on your stream. <br>
-        <p style="font-size: 25px">And it's completely free!</p>
+        <p style="font-size: 25px">And it's completely free!<img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" height="50px" style="margin-left: 12px" alt=""></p>
     </p>
 
 </section>
@@ -146,12 +170,15 @@
 
     </div>
 </section>
+
+<p class="container">Eine komplette erklärung gibt es <a target="_blank" href="https://github.com/Leonlp9/TwitchTTS#how-to-use">hier.</a></p>
+
 <h1 class="container" style="font-weight: 600">Configurator!</h1>
 <div class="container" style="height: 100%; transition: all 500ms; background-color: rgba(43,53,65,0.78); padding: 20px; border-radius: 20px; text-align: center">
 
     <div data-toggle="tooltip" data-placement="left" title="Du musst deinen Kanalnamen hier eingeben damit wir deine Kanalpunktebelohnung finden können!">
         <label for="ChannelName">Dein Kanalname</label><br>
-        <input style="background: #202731; width: 100%; border: none; outline: none; color: white" type="text" name="Name" id="ChannelName" onchange="ChannelName=this.value; urlgen();">
+        <input placeholder="Leon_lp9" style="background: #202731; width: 100%; border: none; outline: none; color: white" type="text" name="Name" id="ChannelName" onchange="ChannelName=this.value; urlgen();">
     </div>
     <br>
 
@@ -170,18 +197,28 @@
     <br>
 
     <div data-toggle="tooltip" data-placement="left" title="Wenn die Nachricht länger ist als hier angegeben wird sie nicht vorgelesen!">
-        <label for="slider" id="sliderlabel">Maximale länge der TTS: 80</label>
+        <label for="slider" id="sliderlabel">Maximale länge der TTS: 80 Zeichen</label>
         <div class="slidecontainer" id="slider">
             <input type="range" min="20" max="500" value="80" class="slider" id="myRange">
         </div>
     </div>
     <br>
 
+    <label for="schema">Vorlese Schema</label>
+    <select id="schema" onchange="vorleseshema = this.selectedIndex; urlgen();" style="width: 100%; background: #202731; color: white; border: none; outline: none; font-size: 18px">
+        <option>TTS von (Name). (Text)</option>
+        <option>(Name) sagt (Text)</option>
+        <option>(Text)</option>
+    </select>
+    <br>
+    <br>
+    <br>
+
 <!--    Voice Settings-->
     <section style="background: rgba(32,39,49,0.63); border-radius: 20px">
         <h1>Voice Settings</h1>
         <label for="voiceSelect">Stimme</label><br>
-        <select onchange="selectvoice = this.selectedIndex; urlgen();" id="voiceSelect"></select>
+        <select onchange="selectvoice = this.selectedIndex; urlgen();" style="width: 100%; background: #202731; color: white; border: none; outline: none; font-size: 18px" id="voiceSelect"></select>
 
         <br>
         <br>
@@ -197,19 +234,94 @@
         <button type="button" class="btn btn-dark" onclick="TestSpeak()">Test Speak</button>
         <button type="button" class="btn btn-dark" onclick="speechSynthesis.stop()">Stop Speak</button>
     </section>
+    <br>
+    <br>
+    <section style="background: rgba(32,39,49,0.63); border-radius: 20px; min-height: 100px; transition: all 500ms">
+        <h1>Overlay Settings</h1>
+        <div data-toggle="tooltip" data-placement="left" title="" style="display:flex; flex-direction: column; align-items: center;">
+            <label for="slider" id="onOverlayLabel">Willst du ein Overlay?</label>
+            <input type="checkbox" id="onOverlay" onchange="if (this.checked){document.getElementById('overlay').style.display = 'block'}else{document.getElementById('overlay').style.display = 'none'} overlay = this.checked; urlgen();" class="checktextani">
+        </div>
+        <br>
 
+        <section id="overlay" style="display: none">
+            <div data-toggle="tooltip" data-placement="left" title="Soll der Text von Overlay beim erscheinen animiert sein?" style="display:flex; flex-direction: column; align-items: center;">
+                <label for="textanicheck" id="textanilabel">Text Animation?</label>
+                <input type="checkbox" id="textanicheck" onchange="overlayanimation = this.checked; urlgen();" class="checktextani">
+            </div>
+            <br>
+
+
+            <label for="template">Templates</label>
+            <select id="template" onchange="overlaytemplate = this.selectedIndex; urlgen(); if (this.selectedIndex == 1){document.getElementById('customOverlay').style.display = 'block'}else{document.getElementById('customOverlay').style.display = 'none'}" style="width: 100%; background: #202731; color: white; border: none; outline: none; font-size: 18px">
+                <option selected disabled hidden>Choose here</option>
+                <option>Custom</option>
+                <option>Leon_lp9 Template</option>
+                <option>Tryus_ Template</option>
+                <option>FetziDieLegende Template</option>
+            </select>
+            Die Beispiele der Templates sind <a target="_blank" href="https://github.com/Leonlp9/TwitchTTS#templates">hier</a> aufgelistet
+            <br>
+
+            <section id="customOverlay" style="display: none">
+                <br>
+                <h2>Comming Soon</h2>
+                <br>
+            </section>
+
+        </section>
+    </section>
 
     <br>
     <br>
-    <div data-toggle="tooltip" data-placement="left" title="" style="display:flex; flex-direction: column; align-items: center;">
-        <label for="slider" id="textanilabel">Text Animation?</label>
-        <input type="checkbox" id="textanicheck" class="checktextani">
-    </div>
+
+    <section style="background: rgba(32,39,49,0.63); border-radius: 20px; min-height: 100px; transition: all 500ms">
+        <h1>ChatBot [Danger!]</h1>
+        <div data-toggle="tooltip" data-placement="left" title="Der Chat Bot schreibt dem Benutzer wenn er zu viele Zeichen benutzt hat!" style="display:flex; flex-direction: column; align-items: center;">
+            <label for="onChatBot" id="onChatBotLabel">Willst du ein ChatBot?</label>
+            <input type="checkbox" id="onChatBot" onchange="if (this.checked){document.getElementById('Chatbot').style.display = 'block'}else{document.getElementById('Chatbot').style.display = 'none'} chatbot = this.checked; urlgen();" class="checktextani">
+        </div>
+        <br>
+
+        <section id="Chatbot" style="display: none">
+
+            <label for="oauthinput">OAuth Code Eingeben</label>
+            <input onchange="chatbotoauth = this.value; urlgen()" id="oauthinput" placeholder="oauth:xyz" style="background: #202731; width: 100%; border: none; outline: none; color: white">
+
+            <br>
+            <br>
+            <label for="oauth"><b>OAuth Code</b></label>
+            <p id="oauth" style="color: tomato; text-align: left">Du musst auf diese <a href="https://twitchapps.com/tmi/">Seite</a> gehen und dich dort mit deinem Twitch Konto anmelden und dann,<br> den darauf folgenden <b>oauth:xyz</b> Code kopieren und hier einfügen!
+                <br>
+            <b>Wichtig!!!</b> Mit diesem Code hat man zugriff auf deinen TwitchChat Konto, sodas der Bot in <b>deinem</b> Namen schreiben kann!
+                <br> <b>Das bedeutet gebe diesen Code niemals an andere weiter!</b></p>
+
+        </section>
+    </section>
 
 
+
+
+
+    <br>
     <br>
     <label for="urlgen">Deine Url:</label>
-    <div style="min-width:100px; height: 70px; border: 1px #4b4b4b solid; overflow: scroll" id="urlgen" class="hidescroll"></div>
+    <div style="min-width:100%; border: 1px #4b4b4b solid; overflow: scroll; word-break: break-word; text-align: left" class="hidescroll anticopy">
+        <div>
+            <p style="min-width:100px; height: 70px; overflow: scroll; word-break: break-word; text-align: left" id="urlgen" class="hidescroll">
+
+            </p>
+            <button type="button" class="btn btn-dark" onclick="copyToClipboard('urlgen')">Copy Url</button>
+        </div>
+        <span id="anticopyschutz" class="anticopyschutz">Es wäre schon sehr nice wenn du mich für diese Ehren aktion unterstützt! Folge mir doch auf Twitch und dann kannst du die Url kopieren! Versprochen!! <br>
+
+            <a href="https://www.twitch.tv/leon_lp9" onclick="document.getElementById('anticopyschutz').style.display = 'none'" target="_blank">Folge hier</a><br>
+
+            <div class="spinner-border" role="status">
+
+            </div> Warte auf Follow..
+        </span>
+    </div>
 
 </div>
 
@@ -217,6 +329,28 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+        function copyToClipboard(elementId) {
+
+            // Create a "hidden" input
+            var aux = document.createElement("input");
+
+            // Assign it the value of the specified element
+            aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+
+            // Append it to the body
+            document.body.appendChild(aux);
+
+            // Highlight its content
+            aux.select();
+
+            // Copy the highlighted text
+            document.execCommand("copy");
+
+            // Remove it from the body
+            document.body.removeChild(aux);
+
+        }
 
         console.log = function(e){
             document.getElementById("console").innerHTML = document.getElementById("console").innerHTML + e + "<br>";
@@ -247,7 +381,7 @@
 
         slideCol.oninput = function() {
             length = this.value;
-            document.getElementById("sliderlabel").innerHTML = "Maximale länge der TTS: " + this.value;
+            document.getElementById("sliderlabel").innerHTML = "Maximale länge der TTS: " + this.value + " Zeichen";
             urlgen();
         }
 
@@ -301,9 +435,15 @@
         var rate = "1";
         var pitch = "1";
         var selectvoice = 0;
+        var vorleseshema = 0;
+        var overlay = 0;
+        var overlayanimation = 0;
+        var overlaytemplate = 0;
+        var chatbot = 0;
+        var chatbotoauth = false;
 
         function urlgen(){
-            document.getElementById("urlgen").innerHTML = "https://leonlp9.github.io/TwitchTTS/obs.html?Name=" + ChannelName + "&RewardId=" + RewardId + "&Length=" + length + "&volume=" + volume + "&rate=" + rate + "&pitch=" + pitch + "&voice=" + selectvoice;
+            document.getElementById("urlgen").innerHTML = "https://leonlp9.github.io/TwitchTTS/obs.html?Name=" + ChannelName + "&RewardId=" + RewardId + "&Length=" + length + "&volume=" + volume + "&rate=" + rate + "&pitch=" + pitch + "&voice=" + selectvoice + "&sheme=" + vorleseshema + "&overlay=" + overlay + "&overlayanimation=" + overlayanimation + "&overlaytemplate=" + overlaytemplate + "&chatbot=" + chatbot + "&chatbotoauth=" + chatbotoauth;
         }
 
         function populateVoiceList() {
