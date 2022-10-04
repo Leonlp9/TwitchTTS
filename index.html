@@ -131,7 +131,8 @@
             color: #202731;
             font-weight: 600;
             transition: all 0.5s ease;
-            font-size: 20px;
+            font-size: 19px;
+            overflow: scroll;
         }
 
         .anticopy:hover .anticopyschutz {
@@ -308,12 +309,12 @@
     <label for="urlgen">Deine Url:</label>
     <div style="min-width:100%; border: 1px #4b4b4b solid; overflow: scroll; word-break: break-word; text-align: left" class="hidescroll anticopy">
         <div>
-            <p style="min-width:100px; height: 70px; overflow: scroll; word-break: break-word; text-align: left" id="urlgen" class="hidescroll">
+            <p style="min-width:100px; height: 80px; overflow: scroll; word-break: break-word; text-align: left" id="urlgen" class="hidescroll">
 
             </p>
             <button type="button" class="btn btn-dark" onclick="copyToClipboard('urlgen')">Copy Url</button>
         </div>
-        <span id="anticopyschutz" class="anticopyschutz">Es wäre schon sehr nice wenn du mich für diese Ehren aktion unterstützt! Folge mir doch auf Twitch und dann kannst du die Url kopieren! Versprochen!! <br>
+        <span id="anticopyschutz" class="anticopyschutz hidescroll">Es wäre schon sehr nice wenn du mich für diese Ehren aktion unterstützt! Folge mir doch auf Twitch und dann kannst du die Url kopieren! Versprochen!! <br>
 
             <a href="https://www.twitch.tv/leon_lp9" onclick="document.getElementById('anticopyschutz').style.display = 'none'" target="_blank">Folge hier</a><br>
 
