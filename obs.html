@@ -6,5 +6,12 @@
 </head>
 <body>
 
+<script>
+    const queryString = window.location.search;
+    queryString.split("&amp").forEach((item) => {
+        document.write(item.split("=")[1]);
+    });
+</script>
+
 </body>
 </html>
