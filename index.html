@@ -446,8 +446,17 @@
 
         urlgen();
 
+        var query = "";
+        var url = "";
         function urlgen(){
-            document.getElementById("urlgen").innerHTML = "https://leonlp9.github.io/TwitchTTS/obs.html?Name=" + ChannelName + "&RewardId=" + RewardId + "&Length=" + length + "&volume=" + volume + "&rate=" + rate + "&pitch=" + pitch + "&voice=" + selectvoice + "&sheme=" + vorleseshema + "&overlay=" + overlay + "&overlayanimation=" + overlayanimation + "&overlaytemplate=" + overlaytemplate + "&chatbot=" + chatbot + "&chatbotoauth=" + chatbotoauth;
+
+            //Build a url
+            query = new URLSearchParams({ChannelName: ChannelName, RewardId: RewardId, length: length, volume: volume, rate: rate, pitch: pitch, selectvoice: selectvoice, vorleseshema: vorleseshema, overlay: overlay, overlayanimation: overlayanimation, overlaytemplate: overlaytemplate, chatbot: chatbot, chatbotoauth: chatbotoauth});
+            url = window.location.origin + "obs.html?" + query.toString();
+
+            document.getElementById("urlgen").innerHTML = url;
+
+            // document.getElementById("urlgen").innerHTML = "https://leonlp9.github.io/TwitchTTS/obs.html?Name=" + ChannelName + "&RewardId=" + RewardId + "&Length=" + length + "&volume=" + volume + "&rate=" + rate + "&pitch=" + pitch + "&voice=" + selectvoice + "&sheme=" + vorleseshema + "&overlay=" + overlay + "&overlayanimation=" + overlayanimation + "&overlaytemplate=" + overlaytemplate + "&chatbot=" + chatbot + "&chatbotoauth=" + chatbotoauth;
         }
 
         function populateVoiceList() {
