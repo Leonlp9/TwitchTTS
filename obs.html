@@ -53,7 +53,6 @@
             msg.rate = rate;
             msg.pitch = pitch;
             msg.voice = voicess[selectvoice];
-            msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == selectvoice; })[0];
             speechSynthesis.speak(msg);
         }
     }
