@@ -8,7 +8,22 @@
 
 <script>
     var pram = new URLSearchParams(window.location.search);
-    console.log(pram.get("ChannelName"));
+    const ChannelName = pram.get("ChannelName");
+    const RewardId = pram.get("RewardId");
+    const length = pram.get("length");
+
+    const volume = pram.get("volume");
+    const rate = pram.get("rate");
+    const pitch = pram.get("pitch");
+    const selectvoice = pram.get("selectvoice");
+    const vorleseshema = pram.get("vorleseshema");
+
+    const overlay = pram.get("overlay");
+    const overlayanimation = pram.get("overlayanimation");
+    const overlaytemplate = pram.get("overlaytemplate");
+
+    const chatbot = pram.get("chatbot");
+    const chatbotoauth = pram.get("chatbotoauth");
 </script>
 
 </body>

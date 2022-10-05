@@ -474,7 +474,22 @@
         function urlgen(){
 
             //Build a url
-            query = new URLSearchParams({ChannelName: ChannelName, RewardId: RewardId, length: length, volume: volume, rate: rate, pitch: pitch, selectvoice: selectvoice, vorleseshema: vorleseshema, overlay: overlay, overlayanimation: overlayanimation, overlaytemplate: overlaytemplate, chatbot: chatbot, chatbotoauth: chatbotoauth});
+            query = new URLSearchParams({
+                ChannelName: ChannelName,
+                RewardId: RewardId,
+                length: length,
+                volume: volume,
+                rate: rate,
+                pitch: pitch,
+                selectvoice: selectvoice,
+                vorleseshema: vorleseshema,
+                overlay: overlay,
+                overlayanimation: overlayanimation,
+                overlaytemplate: overlaytemplate,
+                chatbot: chatbot,
+                chatbotoauth: chatbotoauth
+            });
+
             url = window.location.origin + "/TwitchTTS/obs.html?" + query.toString();
 
             document.getElementById("urlgen").innerHTML = url;
