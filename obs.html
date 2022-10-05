@@ -46,7 +46,7 @@
             }
 
             console.log("TTS: " + message);
-            voicess = window.speechSynthesis.getVoices();
+            var voicess = window.speechSynthesis.getVoices();
             var msg = new SpeechSynthesisUtterance();
             msg.text = message;
             msg.volume = volume;
