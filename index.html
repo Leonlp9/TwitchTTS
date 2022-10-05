@@ -219,7 +219,7 @@
     <section style="background: rgba(32,39,49,0.63); border-radius: 20px">
         <h1>Voice Settings</h1>
         <label for="voiceSelect">Stimme</label><br>
-        <select onchange="selectvoice = this.selectedIndex; urlgen();" style="width: 100%; background: #202731; color: white; border: none; outline: none; font-size: 18px" id="voiceSelect"></select>
+        <select onchange="selectvoice = this.options[this.selectedIndex].text; urlgen();" style="width: 100%; background: #202731; color: white; border: none; outline: none; font-size: 18px" id="voiceSelect"></select>
 
         <br>
         <br>
@@ -507,10 +507,6 @@
             for (let i = 0; i < voices.length; i++) {
                 const option = document.createElement('option');
                 option.textContent = `${voices[i].name} (${voices[i].lang})`;
-
-                if (voices[i].default) {
-                    option.textContent += ' — DEFAULT';
-                }
 
                 option.setAttribute('data-lang', voices[i].lang);
                 option.setAttribute('data-name', voices[i].name);

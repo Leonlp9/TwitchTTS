@@ -34,12 +34,6 @@
         ComfyJS.Init(ChannelName, chatbotoauth);
     }
 
-    setTimeout(function() {
-        synth = window.speechSynthesis;
-        voices = synth.getVoices();
-        voices;
-    }, 5000);
-
     //TTS
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
         if (flags.customReward && extra.customRewardId == RewardId) {
@@ -57,7 +51,7 @@
             msg.volume = volume;
             msg.rate = rate;
             msg.pitch = pitch;
-            msg.voice = voices[selectvoice];
+            msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == selectvoice; })[0];
             speechSynthesis.speak(msg);
         }
     }
