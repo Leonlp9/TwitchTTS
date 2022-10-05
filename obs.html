@@ -34,6 +34,8 @@
         ComfyJS.Init(ChannelName, chatbotoauth);
     }
 
+    var voicess = window.speechSynthesis.getVoices();
+
     //TTS
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
         if (flags.customReward && extra.customRewardId == RewardId) {
@@ -46,7 +48,6 @@
             }
 
             console.log("TTS: " + message);
-            var voicess = window.speechSynthesis.getVoices();
             var msg = new SpeechSynthesisUtterance();
             msg.text = message;
             msg.volume = volume;
