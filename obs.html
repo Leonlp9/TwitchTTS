@@ -47,11 +47,18 @@
 
             console.log("TTS: " + message);
             var msg = new SpeechSynthesisUtterance();
-            msg.text = message;
+
+            if (vorleseshema == "0") {
+                msg.text = "TTS von " + user + ". " + message;
+            }else if (vorleseshema == "1") {
+                msg.text = user + " sagt: " + message;
+            }else {
+                msg.text = message;
+            }
+
             msg.volume = volume;
             msg.rate = rate;
             msg.pitch = pitch;
-            msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == selectvoice; })[0];
             speechSynthesis.speak(msg);
         }
     }
