@@ -312,8 +312,8 @@
             <p style="min-width:100px; height: 80px; overflow: scroll; word-break: break-word; text-align: left" id="urlgen" class="hidescroll">
 
             </p>
-            <button type="button" class="btn btn-dark" onclick="copyToClipboard('urlgen')">Copy Url</button>
-            <button type="button" class="btn btn-dark" onclick="window.open(document.getElementById('urlgen').innerHTML, '_blank').focus();">Open Url in Browser</button>
+            <button type="button" class="btn btn-dark" onclick="copyToClipboardText(url.value)">Copy Url</button>
+            <button type="button" class="btn btn-dark" onclick="window.open(url, '_blank').focus();">Open Url in Browser</button>
         </div>
         <span id="anticopyschutz" class="anticopyschutz hidescroll">Es wäre schon sehr nice wenn du mich für diese Ehren aktion unterstützt! Folge mir doch auf Twitch und dann kannst du die Url kopieren! Versprochen!! <br>
 
@@ -339,6 +339,28 @@
 
             // Assign it the value of the specified element
             aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+
+            // Append it to the body
+            document.body.appendChild(aux);
+
+            // Highlight its content
+            aux.select();
+
+            // Copy the highlighted text
+            document.execCommand("copy");
+
+            // Remove it from the body
+            document.body.removeChild(aux);
+
+        }
+
+        function copyToClipboardText(text) {
+
+            // Create a "hidden" input
+            var aux = document.createElement("input");
+
+            // Assign it the value of the specified element
+            aux.setAttribute("value", text);
 
             // Append it to the body
             document.body.appendChild(aux);
@@ -452,7 +474,7 @@
 
             //Build a url
             query = new URLSearchParams({ChannelName: ChannelName, RewardId: RewardId, length: length, volume: volume, rate: rate, pitch: pitch, selectvoice: selectvoice, vorleseshema: vorleseshema, overlay: overlay, overlayanimation: overlayanimation, overlaytemplate: overlaytemplate, chatbot: chatbot, chatbotoauth: chatbotoauth});
-            url = window.location.origin + "obs.html?" + query.toString();
+            url = window.location.origin + "TwitchTTS/obs.html?" + query.toString();
 
             document.getElementById("urlgen").innerHTML = url;
 
