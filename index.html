@@ -179,7 +179,7 @@
 
     <div data-toggle="tooltip" data-placement="left" title="Du musst deinen Kanalnamen hier eingeben damit wir deine Kanalpunktebelohnung finden können!">
         <label for="ChannelName">Dein Kanalname</label><br>
-        <input placeholder="Leon_lp9" style="background: #202731; width: 100%; border: none; outline: none; color: white" type="text" name="Name" id="ChannelName" onchange="ChannelName=this.value; urlgen();">
+        <input required placeholder="Leon_lp9" style="background: #202731; width: 100%; border: none; outline: none; color: white" type="text" name="Name" id="ChannelName" onchange="ChannelName=this.value; urlgen();">
     </div>
     <br>
 
@@ -312,7 +312,7 @@
             <p style="min-width:100px; height: 80px; overflow: scroll; word-break: break-word; text-align: left" id="urlgen" class="hidescroll">
 
             </p>
-            <button type="button" class="btn btn-dark" onclick="copyToClipboardText(url.value)">Copy Url</button>
+            <button type="button" class="btn btn-dark" onclick="copyToClipboardText(url)">Copy Url</button>
             <button type="button" class="btn btn-dark" onclick="window.open(url, '_blank').focus();">Open Url in Browser</button>
         </div>
         <span id="anticopyschutz" class="anticopyschutz hidescroll">Es wäre schon sehr nice wenn du mich für diese Ehren aktion unterstützt! Folge mir doch auf Twitch und dann kannst du die Url kopieren! Versprochen!! <br>
@@ -466,10 +466,11 @@
         var chatbot = 0;
         var chatbotoauth = false;
 
-        urlgen();
 
         var query = "";
         var url = "";
+
+        urlgen();
         function urlgen(){
 
             //Build a url
