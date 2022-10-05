@@ -7,10 +7,7 @@
 <body>
 
 <script>
-    const queryString = window.location.search;
-    queryString.split("&amp").forEach((item) => {
-        document.write(item.split("=")[1]);
-    });
+    var prarm = new URLSearchParams(window.location.search);
 </script>
 
 </body>
