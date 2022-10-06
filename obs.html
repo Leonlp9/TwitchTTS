@@ -236,6 +236,11 @@
             }
 
             console.log("TTS: " + message);
+            synth = window.speechSynthesis;
+            voices = synth.getVoices();
+            voices;
+
+            var message = "Suiiiiii"
             var msg = new SpeechSynthesisUtterance();
 
             if (vorleseshema == "0") {
@@ -249,7 +254,8 @@
             msg.volume = volume;
             msg.rate = rate;
             msg.pitch = pitch;
-            speechSynthesis.speak(msg);
+            msg.voice = voices[selectvoice];
+            synth.speak(msg);
         }
 
         if (overlay == "true"){
