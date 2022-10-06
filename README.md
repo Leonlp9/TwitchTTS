@@ -18,11 +18,11 @@ You can use it to make your own chat to speech bot or just use it as a template 
 
 ## Templates
 
-###Leon_lp9 Template
+### Leon_lp9 Template
 ![image](https://cdn.discordapp.com/attachments/997527016557518940/1027620624673275975/unknown.png)
 
-###Tryus_ Template
+### Tryus_ Template
 ![image](https://cdn.discordapp.com/attachments/997527016557518940/1027620924830265414/unknown.png)
 
-###FetziDieLegende Template
+### FetziDieLegende Template
 ![image](https://cdn.discordapp.com/attachments/997527016557518940/1027621187737632848/unknown.png)
