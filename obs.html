@@ -244,9 +244,9 @@
 
             if (vorleseshema == "0") {
                 msg.text = "TTS von " + user + ". " + message;
-            }else if (vorleseshema == "1") {
+            } else if (vorleseshema == "1") {
                 msg.text = user + " sagt: " + message;
-            }else {
+            } else {
                 msg.text = message;
             }
 
@@ -255,64 +255,65 @@
             msg.pitch = pitch;
             msg.voice = voices[selectvoice];
             synth.speak(msg);
-        }
 
-        if (overlay == "true"){
 
-            document.getElementById("TTS" + overlaytemplate).classList.remove("beforTTS" + overlaytemplate);
+            if (overlay == "true") {
 
-            document.getElementById("TTSuser" + overlaytemplate).innerHTML = user;
+                document.getElementById("TTS" + overlaytemplate).classList.remove("beforTTS" + overlaytemplate);
 
-            if (overlayanimation == "false"){
+                document.getElementById("TTSuser" + overlaytemplate).innerHTML = user;
 
-                document.getElementById("TTStext" + overlaytemplate).innerHTML = message;
+                if (overlayanimation == "false") {
 
-            }else{
+                    document.getElementById("TTStext" + overlaytemplate).innerHTML = message;
 
-                document.getElementById("TTStext" + overlaytemplate).innerHTML = "";
+                } else {
 
-                var i = 0;
-                var txt = message;
-                var speed = 45;
+                    document.getElementById("TTStext" + overlaytemplate).innerHTML = "";
 
-                function typeWriter() {
-                    if (i < txt.length) {
-                        document.getElementById("TTStext" + overlaytemplate).innerHTML += txt.charAt(i);
-                        i++;
+                    var i = 0;
+                    var txt = message;
+                    var speed = 45;
 
-                        if (txt.charAt(i) == " ") {
-                            setTimeout(typeWriter, 200);
-                        }else if (txt.charAt(i) == ".") {
-                            setTimeout(typeWriter, 400);
-                        }else if (txt.charAt(i) == ",") {
-                            setTimeout(typeWriter, 200);
-                        } else {
-                            setTimeout(typeWriter, speed);
+                    function typeWriter() {
+                        if (i < txt.length) {
+                            document.getElementById("TTStext" + overlaytemplate).innerHTML += txt.charAt(i);
+                            i++;
+
+                            if (txt.charAt(i) == " ") {
+                                setTimeout(typeWriter, 200);
+                            } else if (txt.charAt(i) == ".") {
+                                setTimeout(typeWriter, 400);
+                            } else if (txt.charAt(i) == ",") {
+                                setTimeout(typeWriter, 200);
+                            } else {
+                                setTimeout(typeWriter, speed);
+                            }
                         }
                     }
+
+                    typeWriter();
+
+                    document.getElementById("TTSuser" + overlaytemplate).style.color = extra.userColor;
+
                 }
 
-                typeWriter();
-
-                document.getElementById("TTSuser" + overlaytemplate).style.color = extra.userColor;
-
-            }
-
-            msg.onend = function (event = SpeechSynthesisEvent) {
-                var speakDuration = event.elapsedTime * msg.rate / 3;
-
-                setTimeout(function () {
-                    document.getElementById("TTS" + overlaytemplate).classList.add("afterTTS" + overlaytemplate);
+                msg.onend = function (event = SpeechSynthesisEvent) {
+                    var speakDuration = event.elapsedTime * msg.rate / 3;
 
                     setTimeout(function () {
-                        document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS" + overlaytemplate);
-                        document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS" + overlaytemplate);
-                    }, 2000);
+                        document.getElementById("TTS" + overlaytemplate).classList.add("afterTTS" + overlaytemplate);
 
-                }, speakDuration);
+                        setTimeout(function () {
+                            document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS" + overlaytemplate);
+                            document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS" + overlaytemplate);
+                        }, 2000);
 
-            };
+                    }, speakDuration);
 
+                };
+
+            }
         }
     }
 
