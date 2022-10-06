@@ -110,11 +110,30 @@
         .tts{
             position: absolute;
             display: none;
+            opacity: 1;
+            transition: all 1.5s ease-in-out;
         }
 
         .TTStext{
             font-size: 30px;
             word-break: break-word;
+        }
+
+        #TTS3{
+            background: linear-gradient(90deg, rgba(0,70,164,0.7287289915966386) 0%, rgba(0,69,121,0.7287289915966386) 100%);
+            color: white;
+            padding: 2% 8%;
+            border-radius: 10px;
+        }
+
+        .beforTTS{
+            opacity: 0;
+            margin-right: 200px;
+        }
+
+        .afterTTS{
+            opacity: 0;
+            margin-left: 200px;
         }
 
     </style>
@@ -184,6 +203,8 @@
 
         if (overlay == "true"){
 
+            document.getElementById("TTS" + overlaytemplate).classList.remove("beforTTS");
+
             document.getElementById("TTSuser" + overlaytemplate).innerHTML = user;
 
             if (overlayanimation == "false"){
@@ -217,7 +238,24 @@
 
                 typeWriter();
 
+                document.getElementById("TTSuser" + overlaytemplate).style.color = extra.userColor;
+
             }
+
+            msg.onend = function (event = SpeechSynthesisEvent) {
+                var speakDuration = event.elapsedTime * msg.rate / 3;
+
+                setTimeout(function () {
+                    document.getElementById("TTS" + overlaytemplate).classList.add("afterTTS");
+
+                    setTimeout(function () {
+                        document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS");
+                        document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS");
+                    }, 2000);
+
+                }, speakDuration);
+
+            };
 
         }
     }
@@ -273,29 +311,29 @@
 <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; position: fixed">
 
 
-    <div class="TTSContainer" id="TTSContainer" style="background: #6441a5; width: 700px; height: 400px; position: relative; display: flex; align-items: center; justify-content: center;">
+    <div class="TTSContainer" id="TTSContainer" style="width: 700px; height: 400px; position: relative; display: flex; align-items: center; justify-content: center;">
 
 <!--        CustomTTS-->
-        <div class="tts" id="CustomTTS">
-            <p>TTs von: <span class="TTSuser" id="TTSuser1">Custom</span></p>
+        <div class="tts beforTTS" id="TTS1">
+            <p>TTS: <span class="TTSuser" id="TTSuser1">Custom</span></p>
             <p class="TTStext" id="TTStext1">Was gehtttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</p>
         </div>
 
 <!--        LeonTTS-->
-        <div class="tts" id="LeonTTS">
-            <p>TTs von: <span class="TTSuser" id="TTSuser2">Leon</span></p>
+        <div class="tts beforTTS" id="TTS2">
+            <p>TTS: <span class="TTSuser" id="TTSuser2">Leon</span></p>
             <p class="TTStext" id="TTStext2">Was geht</p>
         </div>
 
 <!--        TomTTS-->
-        <div class="tts" id="TomTTS">
-            <p>TTs von: <span class="TTSuser" id="TTSuser3">Tom</span></p>
+        <div class="tts beforTTS" id="TTS3">
+            <p>TTS: <span class="TTSuser" id="TTSuser3">Tom</span></p>
             <p class="TTStext" id="TTStext3">Was geht bei dir</p>
         </div>
 
 <!--        FetziDieLegendeTTS-->
-        <div class="tts" id="FetziDieLegendeTTS">
-            <p>TTs von: <span class="TTSuser" id="TTSuser4">FetziDieLegende</span></p>
+        <div class="tts beforTTS" id="TTS4">
+            <p>TTS: <span class="TTSuser" id="TTSuser4">FetziDieLegende</span></p>
             <p class="TTStext" id="TTStext4">Was geht bei dir</p>
         </div>
 
@@ -317,15 +355,7 @@
     if (overlay == "false"){
         document.getElementById("TTSContainer").style.display = "none";
     }else{
-        if (overlaytemplate == "1") {
-            document.getElementById("CustomTTS").style.display = "block";
-        }else if (overlaytemplate == "2") {
-            document.getElementById("LeonTTS").style.display = "block";
-        }else if (overlaytemplate == "3") {
-            document.getElementById("TomTTS").style.display = "block";
-        }else if (overlaytemplate == "4") {
-            document.getElementById("FetziDieLegendeTTS").style.display = "block";
-        }
+        document.getElementById("TTS" + overlaytemplate).style.display = "block";
     }
 </script>
 
