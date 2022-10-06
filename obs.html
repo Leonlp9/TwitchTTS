@@ -156,33 +156,6 @@
             addMSG( user, message, extra.userColor, flags);
         }
 
-        if (overlay == "true"){
-            for (let i = 0; i < document.getElementsByClassName("TTSuser").length; i++) {
-                document.getElementsByClassName("TTSuser")[i].innerHTML = user;
-            }
-            if (overlayanimation == "false"){
-                for (let i = 0; i < document.getElementsByClassName("TTStext").length; i++) {
-                    document.getElementsByClassName("TTStext")[i].innerHTML = message;
-                }
-            }else{
-                for (let i = 0; i < document.getElementsByClassName("TTStext").length; i++) {
-                    document.getElementsByClassName("TTStext")[i].innerHTML = "";
-
-                    async function typeSentence(sentence, eleRef, delay = 100) {
-                        const letters = sentence.split("");
-                        let i = 0;
-                        while(i < letters.length) {
-                            await waitForMs(delay);
-                            $(eleRef).append(letters[i]);
-                            i++
-                        }
-                        return;
-                    }
-                }
-            }
-
-        }
-
         if (flags.customReward && extra.customRewardId == RewardId) {
 
             if (message.length > length && user != ChannelName) {
@@ -207,6 +180,45 @@
             msg.rate = rate;
             msg.pitch = pitch;
             speechSynthesis.speak(msg);
+        }
+
+        if (overlay == "true"){
+
+            document.getElementById("TTSuser" + overlaytemplate).innerHTML = user;
+
+            if (overlayanimation == "false"){
+
+                document.getElementById("TTStext" + overlaytemplate).innerHTML = message;
+
+            }else{
+
+                document.getElementById("TTStext" + overlaytemplate).innerHTML = "";
+
+                var i = 0;
+                var txt = message;
+                var speed = 45;
+
+                function typeWriter() {
+                    if (i < txt.length) {
+                        document.getElementById("TTStext" + overlaytemplate).innerHTML += txt.charAt(i);
+                        i++;
+
+                        if (txt.charAt(i) == " ") {
+                            setTimeout(typeWriter, 200);
+                        }else if (txt.charAt(i) == ".") {
+                            setTimeout(typeWriter, 400);
+                        }else if (txt.charAt(i) == ",") {
+                            setTimeout(typeWriter, 200);
+                        } else {
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                }
+
+                typeWriter();
+
+            }
+
         }
     }
 
@@ -265,26 +277,26 @@
 
 <!--        CustomTTS-->
         <div class="tts" id="CustomTTS">
-            <p>TTs von: <span class="TTSuser">Custom</span></p>
-            <p class="TTStext">Was gehtttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</p>
+            <p>TTs von: <span class="TTSuser" id="TTSuser1">Custom</span></p>
+            <p class="TTStext" id="TTStext1">Was gehtttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</p>
         </div>
 
 <!--        LeonTTS-->
         <div class="tts" id="LeonTTS">
-            <p>TTs von: <span class="TTSuser">Leon</span></p>
-            <p class="TTStext">Was geht</p>
+            <p>TTs von: <span class="TTSuser" id="TTSuser2">Leon</span></p>
+            <p class="TTStext" id="TTStext2">Was geht</p>
         </div>
 
 <!--        TomTTS-->
         <div class="tts" id="TomTTS">
-            <p>TTs von: <span class="TTSuser">Tom</span></p>
-            <p class="TTStext">Was geht bei dir</p>
+            <p>TTs von: <span class="TTSuser" id="TTSuser3">Tom</span></p>
+            <p class="TTStext" id="TTStext3">Was geht bei dir</p>
         </div>
 
 <!--        FetziDieLegendeTTS-->
         <div class="tts" id="FetziDieLegendeTTS">
-            <p>TTs von: <span class="TTSuser">FetziDieLegende</span></p>
-            <p class="TTStext">Was geht bei dir</p>
+            <p>TTs von: <span class="TTSuser" id="TTSuser4">FetziDieLegende</span></p>
+            <p class="TTStext" id="TTStext4">Was geht bei dir</p>
         </div>
 
     </div>
