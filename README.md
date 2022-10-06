@@ -17,4 +17,12 @@ You can use it to make your own chat to speech bot or just use it as a template 
 5. Now you can copy the Url and paste it into your Obs. You can also use it in Streamlabs OBS.
 
 ## Templates
-Images Comming Soon
+
+###Leon_lp9 Template
+![image](https://cdn.discordapp.com/attachments/997527016557518940/1027620624673275975/unknown.png)
+
+###Tryus_ Template
+![image](https://cdn.discordapp.com/attachments/997527016557518940/1027620924830265414/unknown.png)
+
+###FetziDieLegende Template
+![image](https://cdn.discordapp.com/attachments/997527016557518940/1027621187737632848/unknown.png)
