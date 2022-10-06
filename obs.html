@@ -126,14 +126,33 @@
             border-radius: 10px;
         }
 
-        .beforTTS{
+        #TTS4{
+            background: rgb(8,36,0); background: rgb(10,36,0); background: linear-gradient(90deg, rgba(2,36,0,0.9) 0%, rgba(33,121,9,0.9) 32%, rgba(0,255,78,0.90) 100%);
+            color: white;
+            padding: 2% 8%;
+            border-radius: 10px;
+        }
+
+        .beforTTS3{
             opacity: 0;
             margin-right: 200px;
         }
 
-        .afterTTS{
+        .afterTTS3{
             opacity: 0;
             margin-left: 200px;
+        }
+
+        .beforTTS4{
+            opacity: 0;
+            margin-right: 200px;
+            transform: rotate(90deg);
+        }
+
+        .afterTTS4{
+            opacity: 0;
+            margin-left: 200px;
+            transform: rotate(-90deg);
         }
 
     </style>
@@ -203,7 +222,7 @@
 
         if (overlay == "true"){
 
-            document.getElementById("TTS" + overlaytemplate).classList.remove("beforTTS");
+            document.getElementById("TTS" + overlaytemplate).classList.remove("beforTTS" + overlaytemplate);
 
             document.getElementById("TTSuser" + overlaytemplate).innerHTML = user;
 
@@ -246,11 +265,11 @@
                 var speakDuration = event.elapsedTime * msg.rate / 3;
 
                 setTimeout(function () {
-                    document.getElementById("TTS" + overlaytemplate).classList.add("afterTTS");
+                    document.getElementById("TTS" + overlaytemplate).classList.add("afterTTS" + overlaytemplate);
 
                     setTimeout(function () {
-                        document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS");
-                        document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS");
+                        document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS" + overlaytemplate);
+                        document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS" + overlaytemplate);
                     }, 2000);
 
                 }, speakDuration);
@@ -314,25 +333,25 @@
     <div class="TTSContainer" id="TTSContainer" style="width: 700px; height: 400px; position: relative; display: flex; align-items: center; justify-content: center;">
 
 <!--        CustomTTS-->
-        <div class="tts beforTTS" id="TTS1">
+        <div class="tts beforTTS1" id="TTS1">
             <p>TTS: <span class="TTSuser" id="TTSuser1">Custom</span></p>
             <p class="TTStext" id="TTStext1">Was gehtttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</p>
         </div>
 
 <!--        LeonTTS-->
-        <div class="tts beforTTS" id="TTS2">
+        <div class="tts beforTTS2" id="TTS2">
             <p>TTS: <span class="TTSuser" id="TTSuser2">Leon</span></p>
             <p class="TTStext" id="TTStext2">Was geht</p>
         </div>
 
 <!--        TomTTS-->
-        <div class="tts beforTTS" id="TTS3">
+        <div class="tts beforTTS3" id="TTS3">
             <p>TTS: <span class="TTSuser" id="TTSuser3">Tom</span></p>
             <p class="TTStext" id="TTStext3">Was geht bei dir</p>
         </div>
 
 <!--        FetziDieLegendeTTS-->
-        <div class="tts beforTTS" id="TTS4">
+        <div class="tts beforTTS4" id="TTS4">
             <p>TTS: <span class="TTSuser" id="TTSuser4">FetziDieLegende</span></p>
             <p class="TTStext" id="TTStext4">Was geht bei dir</p>
         </div>
