@@ -26,3 +26,6 @@ You can use it to make your own chat to speech bot or just use it as a template 
 
 ### FetziDieLegende Template
 ![image](https://cdn.discordapp.com/attachments/997527016557518940/1027621187737632848/unknown.png)
+
+### Custom Template
+![image](https://cdn.discordapp.com/attachments/997527016557518940/1028393545343705088/unknown.png)
