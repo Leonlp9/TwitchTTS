@@ -292,8 +292,21 @@
 
             <section id="customOverlay" style="display: none">
                 <br>
-                <h2>Comming Soon</h2>
+                <h2>Overlay Customizer</h2>
                 <br>
+                <div style="display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; justify-content: center">
+                    <div style=" min-width: 500px; min-height: 300px">
+                        From<input type="color" id="html5colorpicker" onchange="document.getElementById('gradien').style.background = 'linear-gradient(90deg, ' + document.getElementById('html5colorpicker').value + ', ' + document.getElementById('html5colorpicker2').value + ')'" value="#ff0000">
+                        To<input type="color" id="html5colorpicker2" onchange="document.getElementById('gradien').style.background = 'linear-gradient(90deg, ' + document.getElementById('html5colorpicker').value + ', ' + document.getElementById('html5colorpicker2').value + ')'" value="#0400FF"><br>
+                        Text Color<input type="color" id="html5colorpicker3" onchange="document.getElementById('gradien').style.color = this.value" value="#000000FF">
+                    </div>
+                    <div style="background: white; min-width: 500px; min-height: 500px; display: flex; align-items: center; justify-content: center; border-radius: 10px">
+                        <div id="gradien" style="color: black; background: linear-gradient(90deg, #ff0000, #0400FF); padding: 2% 8%; border-radius: 10px; margin: 5%">
+                            <div style="display: flex; flex-direction: row;">TTS: <p style="color: goldenrod; margin-left: 5px"> Leon_lp9</p></div>
+                            <h3>Das ist eine Beispiel TTS</h3>
+                        </div>
+                    </div>
+                </div>
             </section>
 
         </section>
@@ -491,6 +504,9 @@
         var overlaytemplate = 0;
         var chatbot = 0;
         var chatbotoauth = false;
+        var fromColor = "#ff0000";
+        var toColor = "#0400FF";
+        var FontColor = "#000000FF";
 
 
         var query = "";
@@ -513,7 +529,10 @@
                 overlayanimation: overlayanimation,
                 overlaytemplate: overlaytemplate,
                 chatbot: chatbot,
-                chatbotoauth: chatbotoauth
+                chatbotoauth: chatbotoauth,
+                fromColor: fromColor,
+                toColor: toColor,
+                FontColor: FontColor
             });
 
             url = window.location.origin + "/TwitchTTS/obs.html?" + query.toString();

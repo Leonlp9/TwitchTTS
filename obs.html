@@ -211,6 +211,10 @@
     const chatbot = pram.get("chatbot"); console.log("chatbot: " + chatbot);
     const chatbotoauth = pram.get("chatbotoauth"); console.log("chatbotoauth: " + chatbotoauth);
 
+    const fromColor = pram.get("fromColor"); console.log("fromColor: " + fromColor);
+    const toColor = pram.get("toColor"); console.log("toColor: " + toColor);
+    const FontColor = pram.get("FontColor"); console.log("FontColor: " + FontColor);
+
 
     //Connect to Twitch
     if (chatbot == "0"){
@@ -362,6 +366,9 @@
 
         document.getElementById("chat").appendChild(li);
     }
+
+    document.getElementById("TTS1").style.color = FontColor;
+    document.getElementById("TTS1").style.background = 'linear-gradient(90deg, ' + fromColor + ', ' + toColor + ')';
 </script>
 
 <!--TTS-->
