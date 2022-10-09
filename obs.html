@@ -238,8 +238,37 @@
         ComfyJS.Init(ChannelName, chatbotoauth);
     }
 
+    var WarteListe = [];
+    var IsPlaying = false;
+
+    for (let i = 0; i < 10; i++) {
+        WarteListe.push({ user: "TestUser" + i, message: "TestMessage" + i, flags: "flags", self: "self", extra: "extra" });
+    }
+
+    function loopTimeOut(){
+        window.setTimeout ( function() {
+            loopTimeOut();
+
+            if (WarteListe.length > 0 && !IsPlaying){
+                var TheRemovedElement = WarteListe.shift();
+
+                TTS(TheRemovedElement.user, TheRemovedElement.message, TheRemovedElement.flags, TheRemovedElement.self, TheRemovedElement.extra);
+            }
+
+
+        }, 1000);
+    }
+    loopTimeOut();
+
+
     //TTS
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
+        WarteListe.push({ user: user, message: message, flags: flags, self: self, extra: extra });
+    }
+
+    function TTS(user, message, extra, flags){
+
+        IsPlaying = true;
 
         if (overlay == "true" && overlaytemplate == "3"){
             addMSG( user, message, extra.userColor, flags);
@@ -326,6 +355,8 @@
                         setTimeout(function () {
                             document.getElementById("TTS" + overlaytemplate).classList.add("beforTTS" + overlaytemplate);
                             document.getElementById("TTS" + overlaytemplate).classList.remove("afterTTS" + overlaytemplate);
+
+                            IsPlaying = false;
                         }, 2000);
 
                     }, speakDuration);
@@ -333,6 +364,8 @@
                 };
 
             }
+        }else{
+            IsPlaying = false;
         }
     }
 
