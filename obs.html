@@ -251,7 +251,7 @@
                 console.log("TheRemovedElement: ");
                 console.log(TheRemovedElement);
 
-                TTS(TheRemovedElement.user, TheRemovedElement.message, TheRemovedElement.flags, TheRemovedElement.self, TheRemovedElement.extra);
+                TTS(TheRemovedElement.user, TheRemovedElement.message, TheRemovedElement.extra, TheRemovedElement.flags);
             }
 
 
@@ -262,7 +262,7 @@
 
     //TTS
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-        WarteListe.push({ user: user, message: message, flags: flags, self: self, extra: extra });
+        WarteListe.push({ user: user, message: message, flags: flags, extra: extra });
     }
 
     function TTS(user, message, extra, flags){
