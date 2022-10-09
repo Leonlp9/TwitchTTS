@@ -248,7 +248,8 @@
             if (WarteListe.length > 0 && !IsPlaying){
                 var TheRemovedElement = WarteListe.shift();
 
-                console.log("TheRemovedElement: " + TheRemovedElement);
+                console.log("TheRemovedElement: ");
+                console.log(TheRemovedElement);
 
                 TTS(TheRemovedElement.user, TheRemovedElement.message, TheRemovedElement.flags, TheRemovedElement.self, TheRemovedElement.extra);
             }
