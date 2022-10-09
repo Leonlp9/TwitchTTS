@@ -1,9 +1,12 @@
 # TwitchTTS | With Overlay!
 A simple Twitch chat to speech bot written in only Html Css and Javascript🤷🏻‍♂️ <br>
 <br>
+TTS means Text to Speech or Chat to Speech. Simply put, this is an overlay that reads out the text of a reward
+<br>
 You can use it to make your own chat to speech bot or just use it as a template for your own project. <br>
 
-[TTS bot configurator Website](https://leonlp9.github.io/TwitchTTS/)
+<ins>The overlay has a built-in queue and lets the first item through first and show up as TTS</ins><br>
+<br> The best is that you can Customize your Overlay fully at this Website: [TTS bot configurator Website](https://leonlp9.github.io/TwitchTTS/)
 
 ![GitHub issues](https://img.shields.io/github/issues/Leonlp9/TwitchTTS)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/Leonlp9/TwitchTTS)
